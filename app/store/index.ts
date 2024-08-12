@@ -2,24 +2,41 @@ import { pizzas } from "./../data";
 import { create } from "zustand";
 import { PizzaType } from "../types";
 
+interface CartPizza extends PizzaType {
+  quantity: number;
+}
+
 interface PizzaStore {
-  pizzas: PizzaType[] |null;
-  addPizza: (pizza: PizzaType) => void;
-  removePizza: (id: number) => void;
+  pizzas: CartPizza[] | null;
+  addToCart: (pizza: CartPizza) => void;
+  removeFromCart: (productId: number) => void;
+  incrementQuantity: (productId: number) => void;
+  decrementQuantity: (productId: number) => void;
 }
 
 const useStore = create<PizzaStore>((set) => ({
   pizzas: [],
-  addPizza: (pizza: PizzaType) =>
+  addToCart: (pizza: CartPizza) =>
     set((state) => ({
-      pizzas: [...state.pizzas as PizzaType[], pizza],
+      pizzas: [...(state.pizzas as CartPizza[]), pizza],
     })),
 
-    
-    removePizza: (id: number) => set((state) => ({
-        pizzas: state.pizzas?.filter((pizza) => pizza.id !== id),
-      })),
+  removeFromCart: (id: number) =>
+    set((state) => ({
+      pizzas: state.pizzas?.filter((pizza) => pizza.id !== id),
+    })),
+
+  incrementQuantity: (productId: number) => {
+    set((state) => ({
+      pizzas: state.pizzas?.map((pizza) =>
+        pizza.id === productId ? { ...pizza, quantity:(pizza.quantity || 0) + 1 } : pizza
+      ),
+    }));
+  },
+  
+  decrementQuantity: (productId: number) => {
+
+  },
 }));
 
 export default useStore;
-

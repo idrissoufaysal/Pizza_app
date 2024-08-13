@@ -2,11 +2,11 @@ import { pizzas } from "./../data";
 import { create } from "zustand";
 import { PizzaType } from "../types";
 
-interface CartPizza extends PizzaType {
+export interface CartPizza extends PizzaType {
   quantity: number;
 }
 
-interface PizzaStore {
+ interface PizzaStore {
   pizzas: CartPizza[] | null;
   addToCart: (pizza: CartPizza) => void;
   removeFromCart: (productId: number) => void;
@@ -14,7 +14,7 @@ interface PizzaStore {
   decrementQuantity: (productId: number) => void;
 }
 
-const useStore = create<PizzaStore>((set) => ({
+const usePizzaStore = create<PizzaStore>((set) => ({
   pizzas: [],
   addToCart: (pizza: CartPizza) =>
     set((state) => ({
@@ -29,14 +29,14 @@ const useStore = create<PizzaStore>((set) => ({
   incrementQuantity: (productId: number) => {
     set((state) => ({
       pizzas: state.pizzas?.map((pizza) =>
-        pizza.id === productId ? { ...pizza, quantity:(pizza.quantity || 0) + 1 } : pizza
+        pizza.id === productId
+          ? { ...pizza, quantity: (pizza.quantity || 0) + 1 }
+          : pizza
       ),
     }));
   },
-  
-  decrementQuantity: (productId: number) => {
 
-  },
+  decrementQuantity: (productId: number) => {},
 }));
 
-export default useStore;
+export default usePizzaStore;

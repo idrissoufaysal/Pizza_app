@@ -6,10 +6,12 @@ import { useEffect, useState } from "react";
 import { log } from "console";
 import Item from "./components/items";
 import Footer from "./components/Footer";
+import { ToastContainer } from "react-toastify";
 
 export default function Home() {
   return (
-    <div >
+    <div>
+      <ToastContainer />
       <Nav />
       <Header />
       <Item />

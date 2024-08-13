@@ -33,7 +33,7 @@ const usePizzaStore = create<PizzaStore>((set) => ({
   removeFromCart: (id: number) =>
     set((state) => ({
       pizzas: state.pizzas?.filter(
-        (pizza) => pizza.id !== id || pizza.quantity > 0
+        (pizza) => pizza.id !== id && pizza.quantity > 0
       ),
     })),
 

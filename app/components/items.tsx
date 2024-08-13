@@ -43,8 +43,8 @@ export default function Item() {
             <Card key={item.id} item={item} addCart={() => addToCart(item)}/>
           ))}
         </div>:(
-          <div className="w-full flex">
-            <p className="text-3xl ">Chargement...</p>
+          <div className="w-full flex items-center mt-10">
+            <p className="text-3xl "> Chargement...</p>
           </div>
         )}
       

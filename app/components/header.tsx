@@ -8,7 +8,7 @@ export default function Header() {
       <h1 className="font-black text-xl lg:text-5xl md:text-4xl text-center md:text-left">
         Le monde du pizza
       </h1>
-      <p className="text-justify md:text-left"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis rerum, quam atque doloribus placeat recusandae rem nam optio adipisci quasi facere deleniti aspernatur eveniet ex cumque iusto quod cum! Mollitia. </p>
+      <p className="text-justify md:text-left"> ipisci </p>
        <button className="bg-orange-600 cursor-pointer hover:bg-orange-500 rounded-md py-2 text-white font-bold text-xl">
         voir les pizza
        </button>
